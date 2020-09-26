@@ -95,6 +95,7 @@ public class JsonUtil {
      * Converts a given string representation of a JSON data to instance of a class
      * @param <T> The generic type to create an instance of
      * @return The instance of T with the specified values in the JSON string
+     * @throws IOException if there was any problem writing to the file.
      */
     public static <T> T fromJsonString(String json, Class<T> instanceClass) throws IOException {
         return objectMapper.readValue(json, instanceClass);
@@ -105,6 +106,7 @@ public class JsonUtil {
      * @param instance The T object to be converted into the JSON string
      * @param <T> The generic type to create an instance of
      * @return JSON data representation of the given class instance, in string
+     * @throws JsonProcessingException If there is a problem processing Json.
      */
     public static <T> String toJsonString(T instance) throws JsonProcessingException {
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(instance);

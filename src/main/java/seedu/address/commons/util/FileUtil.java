@@ -43,6 +43,7 @@ public class FileUtil {
 
     /**
      * Creates a file if it does not exist along with its missing parent directories.
+     * @throws IOException if there was any problem writing to the file.
      */
     public static void createFile(Path file) throws IOException {
         if (Files.exists(file)) {
@@ -56,6 +57,7 @@ public class FileUtil {
 
     /**
      * Creates parent directories of file if it has a parent directory
+     * @throws IOException if there was any problem writing to the file.
      */
     public static void createParentDirsOfFile(Path file) throws IOException {
         Path parentDir = file.getParent();
@@ -67,6 +69,7 @@ public class FileUtil {
 
     /**
      * Assumes file exists
+     * @throws IOException if there was any problem writing to the file.
      */
     public static String readFromFile(Path file) throws IOException {
         return new String(Files.readAllBytes(file), CHARSET);
@@ -75,6 +78,7 @@ public class FileUtil {
     /**
      * Writes given string to a file.
      * Will create the file if it does not exist yet.
+     * @throws IOException if there was any problem writing to the file.
      */
     public static void writeToFile(Path file, String content) throws IOException {
         Files.write(file, content.getBytes(CHARSET));
